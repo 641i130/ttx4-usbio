@@ -1,0 +1,9 @@
+[package]
+name = "TTX4_Monitor"
+authors = ["Caret <c4r3t@yubi.moe>"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rusb = "0.6"
+byteorder = "1.3"
