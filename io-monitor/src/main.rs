@@ -1,4 +1,4 @@
-use std::{time::Duration};
+use std::{time::Duration, thread::sleep, time::Instant, thread};
 
 use rusb::{
     Context, Device, DeviceDescriptor, DeviceHandle, Direction, Result, TransferType, UsbContext,
@@ -20,9 +20,9 @@ fn main() {
             Some((mut device, device_desc, mut handle)) => {
                 read_device(&mut device, &device_desc, &mut handle).unwrap()
             }
-            None => println!("could not find device {:04x}:{:04x}", vid, pid),
+            None => println!("Device {:04x}:{:04x} is not connected!", vid, pid),
         },
-        Err(e) => panic!("could not initialize libusb: {}", e),
+        Err(e) => panic!("Could not initialize libusb: {}", e),
     }
 }
 
@@ -106,29 +106,12 @@ fn read_endpoint<T: UsbContext>(
     transfer_type: TransferType,
 ) {
 
-    let has_kernel_driver = match handle.kernel_driver_active(endpoint.iface) {
-        Ok(true) => {
-            handle.detach_kernel_driver(endpoint.iface).ok();
-            true
-        }
-        _ => false,
-    };
-
-
     match configure_endpoint(handle, &endpoint) {
         Ok(_) => {
-            let mut buf = [0; 64];
-            let timeout = Duration::from_secs(1);
-
+            let mut buf = [0; 64]; // Buffer size!!!
+            let timeout = Duration::from_secs(1); // Check every second?
+            loop {
             match transfer_type {
-                TransferType::Interrupt => {
-                    match handle.read_interrupt(endpoint.address, &mut buf, timeout) {
-                        Ok(len) => {
-                            println!("{:?}", &buf[..len]);
-                        }
-                        Err(err) => println!("could not read from endpoint: {}", err),
-                    }
-                }
                 TransferType::Bulk => match handle.read_bulk(endpoint.address, &mut buf, timeout) {
                     Ok(len) => {
                         // TODO Parse buffer and map where each button is in relation to the code
@@ -138,12 +121,10 @@ fn read_endpoint<T: UsbContext>(
                 },
                 _ => (),
             }
+            print!("\x1B[2J\x1B[1;1H");
+            }
         }
         Err(err) => println!("could not configure endpoint: {}", err),
-    }
-
-    if has_kernel_driver {
-        handle.attach_kernel_driver(endpoint.iface).ok();
     }
 }
 
