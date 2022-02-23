@@ -35,8 +35,9 @@ Buffer values 16-31 seem to be random values, though the odd numbers in that ran
 | 40     | Coin SW*        | 1      | buffer[12]      |
 | 40     | Coin SW**       | 64     | buffer[13]      |
 
-\* The coin switch adds one up to 255 (does not subtract when released) `buffer[12]`. When it hits 255 it goes back to 0 and continues to add 1.
-** this only is added to if you hold the coin switch down for more than a second...
+`*` The coin switch adds one up to 255 (does not subtract when released) `buffer[12]`. When it hits 255 it goes back to 0 and continues to add 1.
+
+`**` this only is added to if you hold the coin switch down for more than a second...
 
 
 ### Video example:
