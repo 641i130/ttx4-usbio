@@ -26,7 +26,7 @@ Buffer values 16-31 seem to be random values, though the odd numbers in that ran
 | 32     | Enter SW        | 255    | buffer[39]      |
 | 33     | Rythm Button 8  | 1      | buffer[4]       |
 | 34     | Rythm Button 9  | 2      | buffer[4]       |
-| 35     | Cansel Button   | x      | x               |
+| 35     | Cansel Button   | 4      | buffer[4]       |
 | 36     | Decision Button | 8      | buffer[4]       |
 | 37     | Select SW       | 16     | buffer[4]       |
 | 38     | Test SW         | 32     | buffer[4]       |
