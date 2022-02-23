@@ -40,4 +40,5 @@ Buffer values 16-31 seem to be random values, though the odd numbers in that ran
 
 
 ### Video example:
-[Video Link](https://raw.githubusercontent.com/641i130/ttx4-usbio/main/assets/monitor.mp4)
+* [IDLE Use; no buttons pressed](https://raw.githubusercontent.com/641i130/ttx4-usbio/main/assets/monitor.mp4)
+* [Just pushing rythym buttons](https://raw.githubusercontent.com/641i130/ttx4-usbio/main/assets/pushing-rythm-butts.mp4)
