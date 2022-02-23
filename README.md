@@ -40,4 +40,4 @@ Buffer values 16-31 seem to be random values, though the odd numbers in that ran
 
 
 ### Video example:
-![](https://raw.githubusercontent.com/641i130/ttx4-usbio/main/assets/monitor.mp4)
+[Video Link](https://raw.githubusercontent.com/641i130/ttx4-usbio/main/assets/monitor.mp4)
