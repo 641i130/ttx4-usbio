@@ -108,14 +108,15 @@ fn read_endpoint<T: UsbContext>(
 
     match configure_endpoint(handle, &endpoint) {
         Ok(_) => {
+            println!("Taito USBIO Monitor");
+            println!("Values are in base 10!!!");
+            println!("");
             let mut buf = [0; 64]; // Buffer size!!!
             let timeout = Duration::from_secs(1); // Check every second?
-            loop {
             match transfer_type {
                 TransferType::Bulk => match handle.read_bulk(endpoint.address, &mut buf, timeout) {
                     Ok(len) => {
                         // TODO Parse buffer and map where each button is in relation to the code
-                        let h_len = len/2;
                         println!("{0: <10} | {1: <10} | {2: <10} | {3: <10}","Index","Byte Val","Index","Byte Val");
                         // &buf[]
                         let mut i = 0;
@@ -130,8 +131,6 @@ fn read_endpoint<T: UsbContext>(
                     Err(err) => println!("could not read from endpoint: {}", err),
                 },
                 _ => (),
-            }
-            print!("\x1B[2J\x1B[1;1H");
             }
         }
         Err(err) => println!("could not configure endpoint: {}", err),
