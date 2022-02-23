@@ -115,7 +115,17 @@ fn read_endpoint<T: UsbContext>(
                 TransferType::Bulk => match handle.read_bulk(endpoint.address, &mut buf, timeout) {
                     Ok(len) => {
                         // TODO Parse buffer and map where each button is in relation to the code
-                        println!("{:?}", &buf[..len]);
+                        let h_len = len/2;
+                        println!("{0: <10} | {1: <10} | {2: <10} | {3: <10}","Index","Byte Val","Index","Byte Val");
+                        // &buf[]
+                        let mut i = 0;
+                        loop {
+                            if i >= len {
+                                break;
+                            }
+                            println!("{0: <10} | {1: <10?} | {2: <10} | {3: <10?}", &i, &buf[i], &i+1, &buf[i+1]);
+                            i+=2;
+                        }
                     }
                     Err(err) => println!("could not read from endpoint: {}", err),
                 },
