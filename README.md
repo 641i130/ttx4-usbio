@@ -9,7 +9,7 @@ The pins do not correlate with the location in the array sent from the io card!
 
 Below is a table with the physical pin of the button and what value is added to the buffer when it is pressed. (Buttons can be pressed to add up to 255 base 10, in various locations). All addition is in base 10. 
 
-IO Pin| Button | Add -> | Buffer Location |
+| IO Pin| Button | Add -> | Buffer Location |
 ---|---|---
 13 | Door L SW | x | x
 14 | Door R SW | x | x
