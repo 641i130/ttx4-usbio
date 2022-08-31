@@ -12,8 +12,8 @@ Another note, buttons can affect multiple buffer locations (probably for turning
 Buffer values 16-31 seem to be random values, though the odd numbers in that range don't change as sparatically as the even ones.
 | IO Pin | Button          | Add -> | Buffer Location |
 |--------|-----------------|--------|-----------------|
-| 13     | Door L SW       | -1     | buffer[9]       |
-| 14     | Door R SW       | -2     | buffer[9]       |
+| 13     | Door L SW       | -1     | buffer[7]       |
+| 14     | Door R SW       | -2     | buffer[7]       |
 | 25     | Rythm Button 1  | 1      | buffer[6]       |
 | 26     | Rythm Button 2  | 2      | buffer[6]       |
 | 27     | Rythm Button 3  | 4      | buffer[6]       |
