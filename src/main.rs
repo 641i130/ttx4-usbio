@@ -82,6 +82,7 @@ fn find_readable_endpoint<T: UsbContext>(
         for interface in config_desc.interfaces() {
             for interface_desc in interface.descriptors() {
                 for endpoint_desc in interface_desc.endpoint_descriptors() {
+                    println!("Endpoint addr : {:?}",endpoint_desc.address());
                     if endpoint_desc.direction() == Direction::In
                         && endpoint_desc.transfer_type() == transfer_type
                     {
