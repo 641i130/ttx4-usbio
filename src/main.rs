@@ -1,4 +1,4 @@
-use std::{time::Duration, thread::sleep, time::Instant, thread};
+use std::{time::Duration};
 
 use rusb::{
     Context, Device, DeviceDescriptor, DeviceHandle, Direction, Result, TransferType, UsbContext,
@@ -129,12 +129,12 @@ fn read_endpoint<T: UsbContext>(
                             i+=2;
                         }
                     }
-                    Err(err) => println!("could not read from endpoint: {}", err),
+                    Err(err) => println!("could not read from endpoint: {:?}", err),
                 },
                 _ => (),
             }
         }
-        Err(err) => println!("could not configure endpoint: {}", err),
+        Err(err) => println!("could not configure endpoint: {:?}", err),
     }
 }
 
